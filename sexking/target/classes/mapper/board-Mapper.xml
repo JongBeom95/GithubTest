@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.board-Mapper">
+
+<select id="getBoardList" resultType="board">
+SELECT * FROM BBS order BY bbsID DESC; 
+</select>
+<insert id="boardwrite">
+insert into BBS values(#{bbsID},#{bbsTitle},#{userID},now(),#{bbsContent},1);
+</insert>
+<select id="getBoardDetail" resultType="board">
+SELECT * FROM BBS where bbsID = #{bbsID};
+</select>
+<delete id="boardDelete">
+delete from BBS where bbsID = #{bbsID}; 
+</delete>
+<update id="boardUpdate">
+update BBS SET bbsTitle = #{bbsTitle}, bbsContent = #{bbsContent} where bbsID = #{bbsID};
+</update>
+ 
+</mapper>
